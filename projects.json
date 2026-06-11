@@ -84,8 +84,8 @@
       ],
       "notes": "README a renforcer plus tard, mais tests et app principale sont presents.",
       "port": 8606,
-      "live_url": "https://automation-seo-content-gap.streamlit.app/",
-      "repository_url": "https://github.com/Heart-Quake/automation-seo-content-gap"
+      "live_url": "https://analyse-content-gap.streamlit.app/",
+      "repository_url": "https://github.com/Heart-Quake/analyse-content-gap"
     },
     {
       "name": "SEO Audit Automator",
@@ -102,7 +102,6 @@
       ],
       "notes": "Pas de README detecte, mais structure et tests suffisants pour V1 stricte pragmatique.",
       "port": 8607,
-      "live_url": "https://automation-seo-audit-tech.streamlit.app/",
       "repository_url": "https://github.com/Heart-Quake/automation-seo-audit-tech"
     },
     {
@@ -187,8 +186,8 @@
       ],
       "notes": "Version retenue a la place de keyword-app-clean.",
       "port": 8612,
-      "live_url": "https://automation-seo-keyword-categorization.streamlit.app/",
-      "repository_url": "https://github.com/Heart-Quake/automation-seo-keyword-categorization"
+      "live_url": "https://keyword-categorization-app.streamlit.app/",
+      "repository_url": "https://github.com/Heart-Quake/keyword-categorization-app"
     }
   ],
   "backlog_projects": [
