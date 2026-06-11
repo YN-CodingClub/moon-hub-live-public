@@ -9,7 +9,7 @@ import streamlit as st
 
 CONFIG_PATH = Path(__file__).with_name("projects.json")
 DEFAULT_CATEGORY = "Toutes"
-PAGE_TITLE = "Moon hub live"
+PAGE_TITLE = "Automation SEO"
 
 
 @dataclass(frozen=True)
@@ -445,8 +445,8 @@ def render_hero(project_count: int, backlog_count: int, category_count: int) -> 
         f"""
         <section class="hub-hero">
             <div>
-                <div class="hub-kicker">Moon hub live · Catalogue SEO</div>
-                <h1 class="hub-title">Le cockpit public des outils SEO.</h1>
+                <div class="hub-kicker">Automation SEO · Catalogue d'outils</div>
+                <h1 class="hub-title">Tous les outils SEO au meme endroit.</h1>
                 <p class="hub-lead">
                     Version Streamlit Cloud du hub : elle documente les outils finalises,
                     leur usage et leur statut, sans executer de processus local.
