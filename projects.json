@@ -106,6 +106,7 @@
       ],
       "notes": "Pas de README detecte, mais structure et tests suffisants pour V1 stricte pragmatique.",
       "port": 8607,
+      "live_url": "https://automation-seo-audit-tech.streamlit.app/",
       "repository_url": "https://github.com/Heart-Quake/automation-seo-audit-tech"
     },
     {
