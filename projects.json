@@ -84,7 +84,7 @@
       ],
       "notes": "README a renforcer plus tard, mais tests et app principale sont presents.",
       "port": 8606,
-      "live_url": "https://analyse-content-gap.streamlit.app/",
+      "live_url": "https://space-gap.streamlit.app/",
       "repository_url": "https://github.com/Heart-Quake/analyse-content-gap"
     },
     {
@@ -186,7 +186,7 @@
       ],
       "notes": "Version retenue a la place de keyword-app-clean.",
       "port": 8612,
-      "live_url": "https://keyword-categorization-app.streamlit.app/",
+      "live_url": "https://categorisation-de-mots-cles.streamlit.app/",
       "repository_url": "https://github.com/Heart-Quake/keyword-categorization-app"
     }
   ],
