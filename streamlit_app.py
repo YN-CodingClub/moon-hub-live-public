@@ -122,24 +122,27 @@ def inject_styles() -> None:
         """
         <style>
             :root {
-                --hub-ink: #171411;
-                --hub-muted: #625c54;
-                --hub-paper: #fffaf2;
-                --hub-panel: rgba(255, 250, 242, 0.78);
-                --hub-panel-strong: rgba(255, 252, 247, 0.94);
-                --hub-line: rgba(23, 20, 17, 0.12);
-                --hub-accent: #c65f28;
-                --hub-good: #187049;
-                --hub-soft: rgba(198, 95, 40, 0.12);
-                --hub-risk: #9c3b27;
-                --hub-shadow: 0 20px 52px rgba(65, 43, 22, 0.10);
+                --hub-background: #222429;
+                --hub-deep: #0F1011;
+                --hub-card: #27282A;
+                --hub-card-strong: #1F2024;
+                --hub-card-hover: #1B1C1E;
+                --hub-border: #37383A;
+                --hub-foreground: #F7F8F8;
+                --hub-muted: #A1A1AA;
+                --hub-muted-strong: #828282;
+                --hub-accent: #49DCBC;
+                --hub-good: #4CEBA6;
+                --hub-risk: #FF3366;
+                --hub-special: #B888EF;
+                --hub-blue: #71A4F4;
+                --hub-ring: rgba(73, 220, 188, 0.42);
+                --hub-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
             }
 
             .stApp {
-                background:
-                    radial-gradient(circle at 12% 8%, rgba(198, 95, 40, 0.14), transparent 28rem),
-                    linear-gradient(135deg, #fbf6ee 0%, #f4efe7 54%, #ece2d5 100%);
-                color: var(--hub-ink);
+                background: var(--hub-background);
+                color: var(--hub-foreground);
             }
 
             [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
@@ -147,32 +150,51 @@ def inject_styles() -> None:
             }
 
             [data-testid="stSidebar"] {
-                background: var(--hub-panel-strong);
-                border-right: 1px solid var(--hub-line);
+                background: var(--hub-deep);
+                border-right: 1px solid var(--hub-border);
             }
 
             [data-testid="stSidebar"] * {
-                color: var(--hub-ink);
+                color: var(--hub-foreground);
+            }
+
+            [data-testid="stSidebar"] label,
+            [data-testid="stSidebar"] p,
+            [data-testid="stSidebar"] span {
+                color: var(--hub-muted);
+            }
+
+            [data-testid="stSidebar"] h2,
+            [data-testid="stSidebar"] h3 {
+                color: var(--hub-foreground);
+            }
+
+            [data-testid="stSidebar"] input,
+            [data-testid="stSidebar"] [role="combobox"],
+            [data-testid="stSidebar"] [role="radiogroup"] label {
+                background: var(--hub-card-strong);
+                border-color: var(--hub-border);
+                color: var(--hub-foreground);
             }
 
             .block-container {
                 max-width: 1180px;
-                padding-top: 2rem;
+                padding-top: 1.6rem;
                 padding-bottom: 4rem;
             }
 
             .hub-hero {
-                border-bottom: 1px solid var(--hub-line);
+                border-bottom: 1px solid var(--hub-border);
                 display: grid;
                 gap: 2rem;
                 grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
                 margin-bottom: 1.4rem;
-                padding: 0.8rem 0 1.8rem;
+                padding: 0.4rem 0 1.6rem;
             }
 
             .hub-kicker {
                 color: var(--hub-accent);
-                font-size: 0.78rem;
+                font-size: 0.76rem;
                 font-weight: 800;
                 letter-spacing: 0.12em;
                 margin-bottom: 0.7rem;
@@ -180,25 +202,25 @@ def inject_styles() -> None:
             }
 
             .hub-title {
-                color: var(--hub-ink);
-                font-size: 4.4rem;
-                font-weight: 900;
-                line-height: 0.98;
+                color: var(--hub-foreground);
+                font-size: 3.45rem;
+                font-weight: 800;
+                line-height: 1;
                 margin: 0;
                 max-width: 760px;
             }
 
             .hub-lead {
                 color: var(--hub-muted);
-                font-size: 1.05rem;
-                line-height: 1.65;
+                font-size: 1rem;
+                line-height: 1.6;
                 margin: 1rem 0 0;
                 max-width: 760px;
             }
 
             .hero-panel, .project-shell, .backlog-panel {
-                background: var(--hub-panel);
-                border: 1px solid var(--hub-line);
+                background: var(--hub-card);
+                border: 1px solid var(--hub-border);
                 box-shadow: var(--hub-shadow);
             }
 
@@ -209,9 +231,9 @@ def inject_styles() -> None:
             }
 
             .hero-panel-title {
-                color: var(--hub-ink);
-                font-size: 1.25rem;
-                font-weight: 900;
+                color: var(--hub-foreground);
+                font-size: 1.05rem;
+                font-weight: 700;
                 line-height: 1.1;
                 margin-bottom: 0.55rem;
             }
@@ -223,25 +245,26 @@ def inject_styles() -> None:
             }
 
             .hub-metrics {
-                border: 1px solid var(--hub-line);
+                border: 1px solid var(--hub-border);
                 border-radius: 8px;
                 display: grid;
                 gap: 1px;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
                 margin: 0 0 1.6rem;
                 overflow: hidden;
-                background: var(--hub-line);
+                background: var(--hub-border);
             }
 
             .hub-metric {
-                background: var(--hub-panel);
+                background: var(--hub-card-strong);
                 padding: 1.1rem;
             }
 
             .hub-metric strong {
-                color: var(--hub-ink);
+                color: var(--hub-good);
                 display: block;
                 font-size: 2rem;
+                font-weight: 700;
                 line-height: 1;
             }
 
@@ -258,6 +281,13 @@ def inject_styles() -> None:
                 border-radius: 8px;
                 margin-bottom: 1rem;
                 padding: 1.2rem;
+                transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+            }
+
+            .project-shell:hover {
+                border-color: rgba(73, 220, 188, 0.52);
+                box-shadow: 0 24px 56px rgba(0, 0, 0, 0.34);
+                transform: translateY(-1px);
             }
 
             .project-head {
@@ -270,9 +300,10 @@ def inject_styles() -> None:
             .category-token {
                 align-items: center;
                 aspect-ratio: 1;
-                background: #171411;
+                background: var(--hub-deep);
+                border: 1px solid var(--hub-border);
                 border-radius: 8px;
-                color: #ffffff;
+                color: var(--hub-accent);
                 display: flex;
                 font-size: 0.72rem;
                 font-weight: 900;
@@ -280,9 +311,9 @@ def inject_styles() -> None:
             }
 
             .project-name {
-                color: var(--hub-ink);
-                font-size: 1.55rem;
-                font-weight: 900;
+                color: var(--hub-foreground);
+                font-size: 1.35rem;
+                font-weight: 700;
                 line-height: 1.1;
                 margin: 0;
             }
@@ -301,7 +332,7 @@ def inject_styles() -> None:
             }
 
             .badge {
-                border: 1px solid var(--hub-line);
+                border: 1px solid var(--hub-border);
                 border-radius: 999px;
                 color: var(--hub-muted);
                 display: inline-flex;
@@ -312,20 +343,20 @@ def inject_styles() -> None:
             }
 
             .badge.validated {
-                background: rgba(24, 112, 73, 0.12);
-                border-color: rgba(24, 112, 73, 0.25);
+                background: rgba(76, 235, 166, 0.15);
+                border-color: rgba(76, 235, 166, 0.28);
                 color: var(--hub-good);
             }
 
             .badge.cloud {
-                background: var(--hub-soft);
-                border-color: rgba(198, 95, 40, 0.25);
+                background: rgba(73, 220, 188, 0.12);
+                border-color: rgba(73, 220, 188, 0.25);
                 color: var(--hub-accent);
             }
 
             .badge.backlog {
-                background: rgba(156, 59, 39, 0.10);
-                border-color: rgba(156, 59, 39, 0.24);
+                background: rgba(255, 51, 102, 0.14);
+                border-color: rgba(255, 51, 102, 0.28);
                 color: var(--hub-risk);
             }
 
@@ -337,7 +368,7 @@ def inject_styles() -> None:
             }
 
             .app-link, .disabled-link {
-                border-radius: 999px;
+                border-radius: 8px;
                 display: flex;
                 font-size: 0.88rem;
                 font-weight: 800;
@@ -346,16 +377,33 @@ def inject_styles() -> None:
                 padding: 0.72rem 0.9rem;
                 text-align: center;
                 text-decoration: none !important;
+                transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
             }
 
             .app-link {
-                background: #171411;
-                color: #ffffff !important;
+                background: var(--hub-foreground);
+                border: 1px solid var(--hub-foreground);
+                color: var(--hub-deep) !important;
+                margin-bottom: 0.55rem;
+            }
+
+            .app-link:hover,
+            .app-link:focus-visible {
+                background: var(--hub-accent);
+                border-color: var(--hub-accent);
+                color: var(--hub-deep) !important;
+                transform: translateY(-1px);
+            }
+
+            .app-link:focus-visible {
+                outline: 2px solid var(--hub-ring);
+                outline-offset: 2px;
             }
 
             .disabled-link {
-                background: rgba(23, 20, 17, 0.08);
-                color: var(--hub-muted);
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                color: var(--hub-muted-strong);
             }
 
             .section-heading {
@@ -367,6 +415,9 @@ def inject_styles() -> None:
             }
 
             .section-heading h2 {
+                color: var(--hub-foreground);
+                font-size: 1.35rem;
+                font-weight: 700;
                 margin: 0;
             }
 
@@ -382,7 +433,7 @@ def inject_styles() -> None:
             }
 
             .backlog-row {
-                border-top: 1px solid var(--hub-line);
+                border-top: 1px solid var(--hub-border);
                 padding: 1rem 0;
             }
 
@@ -391,8 +442,8 @@ def inject_styles() -> None:
             }
 
             .backlog-title {
-                color: var(--hub-ink);
-                font-weight: 900;
+                color: var(--hub-foreground);
+                font-weight: 700;
                 margin-bottom: 0.3rem;
             }
 
@@ -407,7 +458,7 @@ def inject_styles() -> None:
                 }
 
                 .hub-title {
-                    font-size: 2.8rem;
+                    font-size: 2.35rem;
                 }
 
                 .hero-panel {
