@@ -195,8 +195,8 @@
       ],
       "notes": "Version retenue a la place de keyword-app-clean.",
       "port": 8612,
-      "live_url": "https://categorisation-de-mots-cles.streamlit.app/",
-      "repository_url": "https://github.com/Heart-Quake/keyword-categorization-app"
+      "live_url": "https://automation-seo-keyword-categorization.streamlit.app/",
+      "repository_url": "https://github.com/Heart-Quake/automation-seo-keyword-categorization"
     }
   ],
   "backlog_projects": [
