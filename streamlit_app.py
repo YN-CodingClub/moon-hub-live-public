@@ -28,21 +28,7 @@ class Project:
     documentation_url: str = ""
 
 
-@dataclass(frozen=True)
-class BacklogProject:
-    name: str
-    category: str
-    project_path: str
-    entrypoint: str
-    reason: str
-    decision: str = "A qualifier"
-    target: str = "A definir"
-    similar_to: str = "A definir"
-    overlap: str = "A definir"
-    gap: str = "A documenter"
-
-
-def load_catalog() -> tuple[list[Project], list[BacklogProject]]:
+def load_catalog() -> list[Project]:
     try:
         payload = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -52,7 +38,7 @@ def load_catalog() -> tuple[list[Project], list[BacklogProject]]:
         st.error(f"Le fichier projects.json est invalide : {error}")
         st.stop()
 
-    projects = [
+    return [
         Project(
             name=item["name"],
             slug=item["slug"],
@@ -69,22 +55,6 @@ def load_catalog() -> tuple[list[Project], list[BacklogProject]]:
         )
         for item in payload.get("validated_projects", [])
     ]
-    backlog = [
-        BacklogProject(
-            name=item["name"],
-            category=item["category"],
-            project_path=item["project_path"],
-            entrypoint=item["entrypoint"],
-            reason=item["reason"],
-            decision=item.get("decision", "A qualifier"),
-            target=item.get("target", "A definir"),
-            similar_to=item.get("similar_to", "A definir"),
-            overlap=item.get("overlap", "A definir"),
-            gap=item.get("gap", "A documenter"),
-        )
-        for item in payload.get("backlog_projects", [])
-    ]
-    return projects, backlog
 
 
 def get_category_marker(category: str) -> str:
@@ -108,10 +78,6 @@ def matches_search(project: Project, query: str) -> bool:
             project.name,
             project.category,
             project.description,
-            project.project_path,
-            project.entrypoint,
-            project.notes,
-            " ".join(project.evidence),
         ]
     ).lower()
     return query.lower() in searchable_text
@@ -185,9 +151,6 @@ def inject_styles() -> None:
 
             .hub-hero {
                 border-bottom: 1px solid var(--hub-border);
-                display: grid;
-                gap: 2rem;
-                grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
                 margin-bottom: 1.4rem;
                 padding: 0.4rem 0 1.6rem;
             }
@@ -218,63 +181,10 @@ def inject_styles() -> None:
                 max-width: 760px;
             }
 
-            .hero-panel, .project-shell, .backlog-panel {
+            .project-shell {
                 background: var(--hub-card);
                 border: 1px solid var(--hub-border);
                 box-shadow: var(--hub-shadow);
-            }
-
-            .hero-panel {
-                align-self: end;
-                border-radius: 8px;
-                padding: 1.2rem;
-            }
-
-            .hero-panel-title {
-                color: var(--hub-foreground);
-                font-size: 1.05rem;
-                font-weight: 700;
-                line-height: 1.1;
-                margin-bottom: 0.55rem;
-            }
-
-            .hero-panel-copy {
-                color: var(--hub-muted);
-                font-size: 0.92rem;
-                line-height: 1.55;
-            }
-
-            .hub-metrics {
-                border: 1px solid var(--hub-border);
-                border-radius: 8px;
-                display: grid;
-                gap: 1px;
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                margin: 0 0 1.6rem;
-                overflow: hidden;
-                background: var(--hub-border);
-            }
-
-            .hub-metric {
-                background: var(--hub-card-strong);
-                padding: 1.1rem;
-            }
-
-            .hub-metric strong {
-                color: var(--hub-good);
-                display: block;
-                font-size: 2rem;
-                font-weight: 700;
-                line-height: 1;
-            }
-
-            .hub-metric span {
-                color: var(--hub-muted);
-                display: block;
-                font-size: 0.8rem;
-                font-weight: 800;
-                margin-top: 0.35rem;
-                text-transform: uppercase;
             }
 
             .project-shell {
@@ -294,7 +204,7 @@ def inject_styles() -> None:
                 align-items: start;
                 display: grid;
                 gap: 1rem;
-                grid-template-columns: 4rem minmax(0, 1fr) minmax(170px, 0.28fr);
+                grid-template-columns: minmax(0, 1fr) minmax(160px, 0.24fr);
             }
 
             .category-token {
@@ -305,9 +215,12 @@ def inject_styles() -> None:
                 border-radius: 8px;
                 color: var(--hub-accent);
                 display: flex;
+                flex: 0 0 auto;
                 font-size: 0.72rem;
                 font-weight: 900;
+                height: 2.25rem;
                 justify-content: center;
+                width: 2.25rem;
             }
 
             .project-name {
@@ -360,11 +273,15 @@ def inject_styles() -> None:
                 color: var(--hub-risk);
             }
 
-            .tool-context, .project-meta {
-                color: var(--hub-muted);
-                font-size: 0.88rem;
-                line-height: 1.5;
-                margin-top: 0.8rem;
+            .project-content {
+                min-width: 0;
+            }
+
+            .project-title-row {
+                align-items: center;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.7rem;
             }
 
             .app-link, .disabled-link {
@@ -427,33 +344,8 @@ def inject_styles() -> None:
                 max-width: 560px;
             }
 
-            .backlog-panel {
-                border-radius: 8px;
-                padding: 1.2rem;
-            }
-
-            .backlog-row {
-                border-top: 1px solid var(--hub-border);
-                padding: 1rem 0;
-            }
-
-            .backlog-row:first-child {
-                border-top: 0;
-            }
-
-            .backlog-title {
-                color: var(--hub-foreground);
-                font-weight: 700;
-                margin-bottom: 0.3rem;
-            }
-
-            .backlog-reason {
-                color: var(--hub-muted);
-                line-height: 1.55;
-            }
-
             @media (max-width: 760px) {
-                .hub-hero, .project-head {
+                .project-head {
                     display: block;
                 }
 
@@ -461,19 +353,9 @@ def inject_styles() -> None:
                     font-size: 2.35rem;
                 }
 
-                .hero-panel {
-                    margin-top: 1rem;
-                }
-
-                .hub-metrics {
-                    grid-template-columns: 1fr;
-                }
-
                 .category-token {
-                    aspect-ratio: auto;
-                    margin-bottom: 0.8rem;
-                    padding: 0.55rem 0.75rem;
-                    width: fit-content;
+                    height: 2rem;
+                    width: 2rem;
                 }
 
                 .section-heading {
@@ -491,30 +373,17 @@ def inject_styles() -> None:
     )
 
 
-def render_hero(project_count: int, backlog_count: int, category_count: int) -> None:
+def render_hero(available_count: int) -> None:
     st.markdown(
         f"""
         <section class="hub-hero">
             <div>
-                <div class="hub-kicker">Automation SEO · Catalogue d'outils</div>
-                <h1 class="hub-title">Tous les outils SEO au meme endroit.</h1>
+                <div class="hub-kicker">Automation SEO</div>
+                <h1 class="hub-title">Lance tes outils SEO.</h1>
                 <p class="hub-lead">
-                    Version Streamlit Cloud du hub : elle documente les outils finalises,
-                    leur usage et leur statut, sans executer de processus local.
+                    {available_count} outils disponibles. Filtre, choisis, ouvre le bon outil.
                 </p>
             </div>
-            <aside class="hero-panel">
-                <div class="hero-panel-title">Mode cloud-safe</div>
-                <div class="hero-panel-copy">
-                    Aucun lancement en localhost, aucun PID, aucun acces au poste local.
-                    Les liens live peuvent etre ajoutes outil par outil dans projects.json.
-                </div>
-            </aside>
-        </section>
-        <section class="hub-metrics" aria-label="Indicateurs du catalogue">
-            <div class="hub-metric"><strong>{project_count}</strong><span>Outils valides</span></div>
-            <div class="hub-metric"><strong>{category_count}</strong><span>Familles SEO</span></div>
-            <div class="hub-metric"><strong>{backlog_count}</strong><span>A fiabiliser</span></div>
         </section>
         """,
         unsafe_allow_html=True,
@@ -528,16 +397,11 @@ def render_sidebar(projects: list[Project]) -> tuple[str, str, str]:
         st.markdown("## Explorer")
         selected_view = st.radio(
             "Vue",
-            ["Tous", "Avec lien live", "A publier"],
+            ["Disponibles", "Tous", "A venir"],
             horizontal=False,
         )
         selected_category = st.selectbox("Famille", categories)
-        search_query = st.text_input("Recherche", placeholder="GSC, maillage, spin...")
-        st.markdown("---")
-        st.markdown("### Publication")
-        st.write(
-            "Cette version est le hub live. Les apps metier restent des deploiements separes a relier au catalogue."
-        )
+        search_query = st.text_input("Recherche", placeholder="GSC, maillage, spin")
 
     return selected_category, search_query.strip(), selected_view
 
@@ -554,9 +418,9 @@ def filter_projects(
             continue
         if not matches_search(project, search_query):
             continue
-        if selected_view == "Avec lien live" and not project.live_url:
+        if selected_view == "Disponibles" and not project.live_url:
             continue
-        if selected_view == "A publier" and project.live_url:
+        if selected_view == "A venir" and project.live_url:
             continue
         filtered_projects.append(project)
     return filtered_projects
@@ -566,22 +430,15 @@ def render_project(project: Project) -> None:
     marker = escape(get_category_marker(project.category))
     name = escape(project.name)
     category = escape(project.category)
-    status = escape(project.status)
     description = escape(project.description)
-    notes = escape(project.notes)
-    source = escape(f"{project.project_path}/{project.entrypoint}")
-    live_badge = "Live connecte" if project.live_url else "A relier"
+    live_badge = "Disponible" if project.live_url else "Bientot"
     live_badge_class = "badge validated" if project.live_url else "badge cloud"
 
     action_parts = [
-        f'<a class="app-link" href="{escape(project.live_url)}" target="_blank" rel="noopener">Ouvrir le live</a>'
+        f'<a class="app-link" href="{escape(project.live_url)}" target="_blank" rel="noopener">Ouvrir</a>'
         if project.live_url
-        else '<div class="disabled-link">Lien live a ajouter</div>'
+        else '<div class="disabled-link">Bientot disponible</div>'
     ]
-    if project.repository_url:
-        action_parts.append(
-            f'<a class="app-link" href="{escape(project.repository_url)}" target="_blank" rel="noopener">Repo</a>'
-        )
     if project.documentation_url:
         action_parts.append(
             f'<a class="app-link" href="{escape(project.documentation_url)}" target="_blank" rel="noopener">Docs</a>'
@@ -591,17 +448,16 @@ def render_project(project: Project) -> None:
         [
             f'<article class="project-shell" id="{escape(project.slug)}">',
             '<div class="project-head">',
-            f'<div class="category-token">{marker}</div>',
-            "<div>",
+            '<div class="project-content">',
+            '<div class="project-title-row">',
             f'<h2 class="project-name">{name}</h2>',
+            f'<div class="category-token">{marker}</div>',
+            "</div>",
             f'<p class="project-description">{description}</p>',
             '<div class="badge-row">',
             f'<span class="badge">{category}</span>',
-            f'<span class="badge validated">{status}</span>',
             f'<span class="{live_badge_class}">{live_badge}</span>',
             "</div>",
-            f'<div class="tool-context">{notes}</div>',
-            f'<div class="project-meta"><strong>Source :</strong> {source}</div>',
             "</div>",
             f"<div>{actions_html}</div>",
             "</div>",
@@ -611,58 +467,23 @@ def render_project(project: Project) -> None:
 
     st.markdown(project_html, unsafe_allow_html=True)
 
-    with st.expander(f"Validation · {project.name}", expanded=False):
-        st.write(", ".join(project.evidence) if project.evidence else "Aucune evidence documentee.")
-
-
-def render_backlog(backlog: list[BacklogProject]) -> None:
-    st.markdown(
-        """
-        <div class="section-heading">
-            <div><h2>Backlog de consolidation</h2></div>
-            <p>Outils suivis, mais pas encore eligibles au catalogue finalise.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.markdown('<section class="backlog-panel">', unsafe_allow_html=True)
-    for item in backlog:
-        st.markdown(
-            f"""
-            <div class="backlog-row">
-                <div class="backlog-title">{escape(item.name)}</div>
-                <div class="badge-row">
-                    <span class="badge">{escape(item.category)}</span>
-                    <span class="badge backlog">{escape(item.decision)}</span>
-                    <span class="badge">Recouvrement : {escape(item.overlap)}</span>
-                </div>
-                <div class="backlog-reason">{escape(item.reason)}</div>
-                <div class="project-meta">
-                    Destination : {escape(item.target)} · Gap : {escape(item.gap)}
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-    st.markdown("</section>", unsafe_allow_html=True)
-
 
 def main() -> None:
     st.set_page_config(page_title=PAGE_TITLE, layout="wide")
     inject_styles()
 
-    projects, backlog = load_catalog()
-    categories = {project.category for project in projects}
+    projects = load_catalog()
     selected_category, search_query, selected_view = render_sidebar(projects)
     filtered_projects = filter_projects(projects, selected_category, search_query, selected_view)
+    available_count = sum(1 for project in projects if project.live_url)
 
-    render_hero(len(projects), len(backlog), len(categories))
+    render_hero(available_count)
 
     st.markdown(
         f"""
         <div class="section-heading">
-            <div><h2>Catalogue live</h2></div>
-            <p>Vue active : {escape(selected_view)}. Les fiches sont consultables en ligne et pretes a recevoir les URLs live outil par outil.</p>
+            <div><h2>{escape(selected_view)}</h2></div>
+            <p>Selectionne un outil, puis ouvre son interface dediee.</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -672,9 +493,7 @@ def main() -> None:
         for project in filtered_projects:
             render_project(project)
     else:
-        st.info("Aucun projet ne correspond aux filtres actuels.")
-
-    render_backlog(backlog)
+        st.info("Aucun outil ne correspond aux filtres actuels.")
 
 
 if __name__ == "__main__":

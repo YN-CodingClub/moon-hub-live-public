@@ -7,7 +7,7 @@
       "status": "Valide V1",
       "project_path": "Categorisation-de-mots-cles",
       "entrypoint": "app.py",
-      "description": "Clustering et normalisation avancee de mots-cles SEO pour structurer des univers semantiques.",
+      "description": "Regroupe et nettoie des mots-cles pour construire des univers semantiques exploitables.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
@@ -23,7 +23,7 @@
       "status": "Valide V1",
       "project_path": "GSC-analyser",
       "entrypoint": "interface/app.py",
-      "description": "Analyse avancee des donnees Google Search Console avec opportunites, sante trafic et exports.",
+      "description": "Analyse les donnees Search Console pour detecter les opportunites SEO prioritaires.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
@@ -40,7 +40,7 @@
       "status": "Valide V1",
       "project_path": "Similarweb-free-API",
       "entrypoint": "streamlit_app.py",
-      "description": "Cockpit d'analyse Similarweb non officiel pour recherches unitaires, batch, cache et exports.",
+      "description": "Compare rapidement des domaines avec les donnees de trafic Similarweb disponibles.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
@@ -59,7 +59,7 @@
       "status": "Valide V1",
       "project_path": "amazon-scraper",
       "entrypoint": "streamlit_app.py",
-      "description": "Scraper d'avis Amazon avec resilience, base locale, export multi-format et interface Streamlit.",
+      "description": "Collecte les avis Amazon et prepare des exports propres pour analyse.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
@@ -79,7 +79,7 @@
       "status": "Valide V1",
       "project_path": "analyse-content-gap",
       "entrypoint": "app.py",
-      "description": "Analyse de content gap SEO depuis fichiers concurrents, avec strategies, filtres et exports.",
+      "description": "Compare tes contenus aux concurrents pour reperer les sujets et mots-cles manquants.",
       "evidence": [
         "Point d'entree valide",
         "README present",
@@ -98,7 +98,7 @@
       "status": "Valide V1",
       "project_path": "audit-tech",
       "entrypoint": "app.py",
-      "description": "Automatisation d'audits techniques SEO avec moteur separe et tests associes.",
+      "description": "Transforme un crawl en diagnostic technique SEO priorise.",
       "evidence": [
         "Point d'entree valide",
         "requirements.txt present",
@@ -116,7 +116,7 @@
       "status": "Valide V1",
       "project_path": "silo",
       "entrypoint": "app.py",
-      "description": "Optimiseur de maillage interne semantique croisant donnees GSC et contenu crawle.",
+      "description": "Identifie les liens internes a creer ou renforcer entre pages proches semantiquement.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
@@ -135,7 +135,7 @@
       "status": "Valide V1",
       "project_path": "spin_tool",
       "entrypoint": "spin_generator.py",
-      "description": "Generation de variations de textes avec spins imbriques, variables CSV et exports propres.",
+      "description": "Genere des variantes de textes a partir de spins et de variables CSV.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
@@ -154,7 +154,7 @@
       "status": "Valide V1",
       "project_path": "mcp/keyword-planner/keyword_automation",
       "entrypoint": "app.py",
-      "description": "Cockpit batch pour automatisation Keyword Planner et traitement de volumes importants.",
+      "description": "Traite des listes de mots-cles en volume pour preparer les donnees Keyword Planner.",
       "evidence": [
         "Point d'entree valide",
         "requirements.txt present",
@@ -170,7 +170,7 @@
       "status": "Valide V1",
       "project_path": "keyword-categorization-app",
       "entrypoint": "app/main.py",
-      "description": "Categorisation automatique de mots-cles SEO avec clustering, intentions, familles et exports.",
+      "description": "Classe automatiquement les mots-cles par themes, intentions et familles SEO.",
       "evidence": [
         "Point d'entree valide",
         "README detaille",
