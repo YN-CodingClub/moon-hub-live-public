@@ -1,0 +1,274 @@
+{
+  "validated_projects": [
+    {
+      "name": "Clustering Semantique de Mots-Cles",
+      "slug": "keyword-semantic-clustering",
+      "category": "Mots-cles",
+      "status": "Valide V1",
+      "project_path": "Categorisation-de-mots-cles",
+      "entrypoint": "app.py",
+      "description": "Clustering et normalisation avancee de mots-cles SEO pour structurer des univers semantiques.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present"
+      ],
+      "notes": "Outil oriente categorisation et regroupement semantique.",
+      "port": 8601
+    },
+    {
+      "name": "GSC SEO Analyzer",
+      "slug": "gsc-seo-analyzer",
+      "category": "GSC",
+      "status": "Valide V1",
+      "project_path": "GSC-analyser",
+      "entrypoint": "interface/app.py",
+      "description": "Analyse avancee des donnees Google Search Console avec opportunites, sante trafic et exports.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "Necessite une configuration Google Search Console locale.",
+      "port": 8602
+    },
+    {
+      "name": "Similarweb Free API Cockpit",
+      "slug": "similarweb-free-api-cockpit",
+      "category": "Scraping",
+      "status": "Valide V1",
+      "project_path": "Similarweb-free-API",
+      "entrypoint": "streamlit_app.py",
+      "description": "Cockpit d'analyse Similarweb non officiel pour recherches unitaires, batch, cache et exports.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "API non documentee : utiliser avec prudence et delais raisonnables.",
+      "port": 8604
+    },
+    {
+      "name": "Amazon Reviews Scraper",
+      "slug": "amazon-reviews-scraper",
+      "category": "Scraping",
+      "status": "Valide V1",
+      "project_path": "amazon-scraper",
+      "entrypoint": "streamlit_app.py",
+      "description": "Scraper d'avis Amazon avec resilience, base locale, export multi-format et interface Streamlit.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present",
+        "pyproject.toml present",
+        "Tests detectes"
+      ],
+      "notes": "Verifier la conformite aux CGU Amazon avant usage operationnel.",
+      "port": 8605
+    },
+    {
+      "name": "Analyse Content Gap",
+      "slug": "content-gap-analysis",
+      "category": "Contenu",
+      "status": "Valide V1",
+      "project_path": "analyse-content-gap",
+      "entrypoint": "app.py",
+      "description": "Analyse de content gap SEO depuis fichiers concurrents, avec strategies, filtres et exports.",
+      "evidence": [
+        "Point d'entree valide",
+        "README present",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "README a renforcer plus tard, mais tests et app principale sont presents.",
+      "port": 8606
+    },
+    {
+      "name": "SEO Audit Automator",
+      "slug": "seo-audit-automator",
+      "category": "Technique",
+      "status": "Valide V1",
+      "project_path": "audit-tech",
+      "entrypoint": "app.py",
+      "description": "Automatisation d'audits techniques SEO avec moteur separe et tests associes.",
+      "evidence": [
+        "Point d'entree valide",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "Pas de README detecte, mais structure et tests suffisants pour V1 stricte pragmatique.",
+      "port": 8607
+    },
+    {
+      "name": "Analyse de Maillage Interne SEO",
+      "slug": "internal-linking-analysis",
+      "category": "Maillage interne",
+      "status": "Valide V1",
+      "project_path": "maillage-interne",
+      "entrypoint": "app_streamlit.py",
+      "description": "Analyse et recommandations de maillage interne depuis exports GSC et crawl SEO.",
+      "evidence": [
+        "Point d'entree valide",
+        "README utile",
+        "requirements.txt present"
+      ],
+      "notes": "Projet non Git autonome detecte, mais documentation et entree Streamlit sont claires.",
+      "port": 8608
+    },
+    {
+      "name": "SILO",
+      "slug": "silo-semantic-internal-link-optimizer",
+      "category": "Maillage interne",
+      "status": "Valide V1",
+      "project_path": "silo",
+      "entrypoint": "app.py",
+      "description": "Optimiseur de maillage interne semantique croisant donnees GSC et contenu crawle.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "Peut necessiter le modele spaCy francais indique dans le README.",
+      "port": 8609
+    },
+    {
+      "name": "Generateur de Spin Content",
+      "slug": "spin-content-generator",
+      "category": "Contenu",
+      "status": "Valide V1",
+      "project_path": "spin_tool",
+      "entrypoint": "spin_generator.py",
+      "description": "Generation de variations de textes avec spins imbriques, variables CSV et exports propres.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "Outil robuste pour production de variantes controlees.",
+      "port": 8610
+    },
+    {
+      "name": "Keyword Planner Batch Cockpit",
+      "slug": "keyword-planner-batch-cockpit",
+      "category": "Mots-cles",
+      "status": "Valide V1",
+      "project_path": "mcp/keyword-planner/keyword_automation",
+      "entrypoint": "app.py",
+      "description": "Cockpit batch pour automatisation Keyword Planner et traitement de volumes importants.",
+      "evidence": [
+        "Point d'entree valide",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "Projet interne au dossier mcp, a documenter si usage frequent.",
+      "port": 8611
+    },
+    {
+      "name": "Keyword Categorization App",
+      "slug": "keyword-categorization-app",
+      "category": "Mots-cles",
+      "status": "Valide V1",
+      "project_path": "keyword-categorization-app",
+      "entrypoint": "app/main.py",
+      "description": "Categorisation automatique de mots-cles SEO avec clustering, intentions, familles et exports.",
+      "evidence": [
+        "Point d'entree valide",
+        "README detaille",
+        "requirements.txt present",
+        "Tests detectes"
+      ],
+      "notes": "Version retenue a la place de keyword-app-clean.",
+      "port": 8612
+    }
+  ],
+  "backlog_projects": [
+    {
+      "name": "Google Fan Out",
+      "category": "SERP/IA",
+      "project_path": "Google Fan Out",
+      "entrypoint": "app.py",
+      "reason": "A fiabiliser : dependances locales sensibles, notamment Ollama et le modele IA local, a rendre plus robustes avant validation V1.",
+      "decision": "A fiabiliser",
+      "target": "Outil separe : Google Fan Out",
+      "similar_to": "Agent PAA Connecte / SERP Analyzer Pro",
+      "overlap": "Moyen",
+      "gap": "Extraction Fan Out et scoring de couverture IA utiles, mais a stabiliser cote dependances, erreurs runtime et parcours utilisateur."
+    },
+    {
+      "name": "SERP Analyzer Pro",
+      "category": "SERP/IA",
+      "project_path": "SERP-Analyzer",
+      "entrypoint": "app.py",
+      "reason": "Exclu : le point d'entree ne compile pas actuellement, IndentationError ligne 105.",
+      "decision": "A reparer si besoin",
+      "target": "Outil separe potentiel : SERP Snapshot",
+      "similar_to": "Google Fan Out",
+      "overlap": "Moyen",
+      "gap": "Analyse SERP organique brute, titres, snippets, domaines, features SERP, historique et export CSV. Ne remplace pas Fan Out."
+    },
+    {
+      "name": "Analyse Concurrentielle SEO",
+      "category": "Contenu",
+      "project_path": "analyse-concurrentielle",
+      "entrypoint": "app.py",
+      "reason": "Exclu : README trop minimal et aucun test detecte.",
+      "decision": "A archiver ou fusionner",
+      "target": "Analyse Content Gap",
+      "similar_to": "Analyse Content Gap",
+      "overlap": "Tres fort",
+      "gap": "Recouvrement fort sur Ahrefs/Semrush, filtres concurrents, strategies et visualisations. Analyse Content Gap couvre plus de cas."
+    },
+    {
+      "name": "Agent PAA Connecte",
+      "category": "SERP/IA",
+      "project_path": "paa-scraper",
+      "entrypoint": "app.py",
+      "reason": "Exclu : pas de README ni tests detectes.",
+      "decision": "A fusionner comme mode API",
+      "target": "Google Fan Out",
+      "similar_to": "Google Fan Out",
+      "overlap": "Fort",
+      "gap": "Mode Gemini Search Grounding pour extraire les PAA avec moins de risque scraping. Complement API au mode local/Ollama."
+    },
+    {
+      "name": "Ahref Consolidation",
+      "category": "Mots-cles",
+      "project_path": "ahref-consolidation",
+      "entrypoint": "app.py",
+      "reason": "Exclu : pas de README ni tests detectes.",
+      "decision": "Fusion partielle implementee",
+      "target": "Analyse Content Gap - vue Consolidation Ahrefs par URL",
+      "similar_to": "Analyse Content Gap / Keyword Categorization App",
+      "overlap": "Moyen a fort",
+      "gap": "Vue par URL ajoutee dans analyse-content-gap : top keyword, volume total, position moyenne, nombre de mots-cles, exports CSV/XLSX."
+    },
+    {
+      "name": "Clustering de Mots-Cles Legacy",
+      "category": "Mots-cles",
+      "project_path": "clustering de mots-cles",
+      "entrypoint": "app.py",
+      "reason": "Exclu : pas de README, pas de requirements.txt, pas de tests detectes.",
+      "decision": "A archiver",
+      "target": "Aucun",
+      "similar_to": "Categorisation-de-mots-cles / Keyword Categorization App",
+      "overlap": "Fort",
+      "gap": "Legacy probable sans README, requirements ni tests. A conserver uniquement si une fonction unique est identifiee."
+    },
+    {
+      "name": "Keyword App Clean",
+      "category": "Mots-cles",
+      "project_path": "keyword-app-clean",
+      "entrypoint": "app/main.py",
+      "reason": "Exclu : version probablement intermediaire, remplacee par keyword-categorization-app.",
+      "decision": "Migration partielle implementee",
+      "target": "Keyword Categorization App - import CSV/CSV.gz/ZIP",
+      "similar_to": "Keyword Categorization App",
+      "overlap": "Tres fort",
+      "gap": "Import ZIP/CSV.gz multi-fichiers migré. Restent à étudier : AgGrid, enrichissement IA des clusters, treemap et édition avancée."
+    }
+  ]
+}
