@@ -8,6 +8,7 @@ from pathlib import Path
 import streamlit as st
 
 CONFIG_PATH = Path(__file__).with_name("projects.json")
+LOGO_PATH = Path(__file__).with_name("logo-full-cream.png")
 DEFAULT_CATEGORY = "Toutes"
 PAGE_TITLE = "Automation SEO"
 
@@ -457,6 +458,8 @@ def render_sidebar(projects: list[Project]) -> tuple[str, str, str]:
     categories = [DEFAULT_CATEGORY] + sorted({project.category for project in projects})
 
     with st.sidebar:
+        if LOGO_PATH.exists():
+            st.image(str(LOGO_PATH), width=180)
         st.markdown("## Explorer")
         selected_view = st.radio(
             "Vue",
