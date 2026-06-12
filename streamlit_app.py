@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import base64
 import json
 from dataclasses import dataclass
 from html import escape
@@ -9,6 +10,7 @@ import streamlit as st
 
 CONFIG_PATH = Path(__file__).with_name("projects.json")
 LOGO_PATH = Path(__file__).with_name("logo-sidebar-cream.png")
+LOGO_DISPLAY_WIDTH = 220
 DEFAULT_CATEGORY = "Toutes"
 PAGE_TITLE = "Automation SEO"
 
@@ -119,6 +121,20 @@ def inject_styles() -> None:
             [data-testid="stSidebar"] {
                 background: var(--hub-deep);
                 border-right: 1px solid var(--hub-border);
+            }
+
+            .sidebar-logo {
+                display: flex;
+                justify-content: center;
+                margin: 0.65rem 0 1.75rem;
+            }
+
+            .sidebar-logo img {
+                display: block;
+                width: 220px;
+                max-width: 82%;
+                height: auto;
+                image-rendering: auto;
             }
 
             [data-testid="stSidebar"] * {
@@ -459,7 +475,15 @@ def render_sidebar(projects: list[Project]) -> tuple[str, str, str]:
 
     with st.sidebar:
         if LOGO_PATH.exists():
-            st.image(str(LOGO_PATH), width=220)
+            logo_b64 = base64.b64encode(LOGO_PATH.read_bytes()).decode("ascii")
+            st.markdown(
+                f"""
+                <div class="sidebar-logo">
+                    <img src="data:image/png;base64,{logo_b64}" alt="Yuri & Neil" width="{LOGO_DISPLAY_WIDTH}">
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
         st.markdown("## Explorer")
         selected_view = st.radio(
             "Vue",
